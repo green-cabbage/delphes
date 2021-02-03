@@ -37,7 +37,7 @@ def delta_phi(phi1, phi2):
         dphi = dphi - 2*math.pi        
     if dphi < -math.pi:
         dphi = dphi + 2*math.pi        
-    return dphi
+    return np.abs(dphi)
 
 def lepton_pairing(
     Electron : List[ak_array],
@@ -75,7 +75,7 @@ def lepton_pairing(
                     # print(ak.to_numpy(return_Muon).shape)
                     # print("return_Muon: ", return_Muon)
                     # add delta eta and phi values
-                    delta_etas.append(delta_phi(Electron[1][idx][electron_jdx], Muon[1][idx][muon_jdx]))
+                    delta_etas.append(delta_eta(Electron[1][idx][electron_jdx], Muon[1][idx][muon_jdx]))
                     delta_phis.append(delta_phi(Electron[-2][idx][electron_jdx], Muon[-2][idx][muon_jdx]))
 
                     # assign the respective charges as 10 (arbitrary number) to signify that they
